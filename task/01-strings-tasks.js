@@ -255,7 +255,9 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    // if(!value) return false;
+    // typeOf value.valueOf() == 'string';
+    // throw new Error('Not implemented');
 }
 
 
@@ -284,7 +286,7 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
 }
 
 
