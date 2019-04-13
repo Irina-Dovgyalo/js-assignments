@@ -10,7 +10,7 @@
 
 
 /**
- * Parses a rfc2822 string date representation into date value
+ * Parses angle rfc2822 string date representation into date value
  * For rfc2822 date specification refer to : http://tools.ietf.org/html/rfc2822#page-14
  *
  * @param {string} value
@@ -100,8 +100,9 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,18, 0) => Math.PI
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
-function angleBetweenClockHands(date) {
-    throw new Error('Not implemented');
+function angleBetweenClockHands(date) { 
+   let angle = Math.abs((date.getHours() * 60 + date.getMinutes() + date.getTimezoneOffset() - date.getMinutes() * 12) / 2) % 360;
+   return (angle <= 180 ? angle : 360 - angle) / 180 * Math.PI; 
 }
 
 
