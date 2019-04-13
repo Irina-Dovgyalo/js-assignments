@@ -255,9 +255,10 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    // if(!value) return false;
-    // typeOf value.valueOf() == 'string';
-    // throw new Error('Not implemented');
+    if(!value) return false;
+    if (typeof value == "string" || typeof value.valueOf() == 'string'){
+        return true;
+    } else return false;
 }
 
 
