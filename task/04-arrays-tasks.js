@@ -370,7 +370,7 @@ function getItemsSum(arr) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount(arr) {
+function getFalsyValuesCount(arr) {  
    throw new Error('Not implemented');
 }
 
@@ -389,7 +389,7 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   return arr.filter(value => value === item).length;
 }
 
 /**
