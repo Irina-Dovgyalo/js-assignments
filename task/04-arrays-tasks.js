@@ -436,6 +436,13 @@ function toStringList(arr) {
  */
 function sortCitiesArray(arr) {
    throw new Error('Not implemented');
+   // return arr.sort(function(a, b){       
+   //    if (a.country == b.country){
+   //       return (a.city - b.city);
+   //    } else {
+   //       return (a.country - b.country);
+   //    };
+   // })
 }
 
 /**
@@ -457,7 +464,9 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+   return Array(n).fill(0).map((el, i) => 
+   Array(n).fill(0).map((el, j) => (i == j ? 1 : 0))
+   )
 }
 
 /**
