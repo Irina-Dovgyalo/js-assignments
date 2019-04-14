@@ -103,21 +103,13 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    yield root;
-    if (typeof root.children !== 'undefined') {
-        while (typeof root.children !== 'undefined' && root.children.length === 1) {
-            root = root.children[0];
-            yield root;
-        }
-        if (typeof root.children !== 'undefined') {
-            for (let value of root.children)
-                if (typeof value.children === 'undefined')
-                    yield value;
-                else
-                    yield *depthTraversalTree(value);
-        }
+    const stack = [];
+    stack.push(root);
+    while (stack.length) {
+        let current = stack.pop();
+        yield current;
+        if (current.children) current.children.reverse().forEach(e => stack.push(e));
     }
-    // throw new Error('Not implemented');
 }
 
 
