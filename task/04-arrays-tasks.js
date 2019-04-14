@@ -531,7 +531,16 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-   throw new Error('Not implemented');
+   return new Map(array.reduce((prev, current) =>{
+      let key = keySelector(current);
+      let value = valueSelector(current);
+      let index = prev.findIndex(current => current[0] === key);
+      if(index < 0){
+         prev[prev.length] = [key, [value]];
+      } else {
+         prev[index][1][prev[index][1].length] = value;
+      } return prev;
+   }, []));
 }
 
 
