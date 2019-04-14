@@ -319,6 +319,7 @@ function get3TopItems(arr) {
  */
 function getPositivesCount(arr) { 
    throw new Error('Not implemented');
+   // return arr.filter(v => v > 0).length;
 }
  
 /** 
@@ -435,14 +436,7 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
-   // return arr.sort(function(a, b){       
-   //    if (a.country == b.country){
-   //       return (a.city - b.city);
-   //    } else {
-   //       return (a.country - b.country);
-   //    };
-   // })
+   return arr.sort((a, b) => (a.country > b.country) ? 1 : (a.country === b.country) ? ((a.city > b.city) ? 1 : -1) : -1 );
 }
 
 /**
