@@ -40,7 +40,7 @@ function parseBankAccount(bankAccount) {
 
 /**
  * Returns the string, but with line breaks inserted at just the right places to make sure that no line is longer than the specified column number.
- * Lines can be broken at word boundaries only.
+ * columns can be broken at word boundaries only.
  *
  * @param {string} text
  * @param {number} columns
@@ -65,6 +65,7 @@ function parseBankAccount(bankAccount) {
 function* wrapText(text, columns) {
     throw new Error('Not implemented');
 }
+
 
 
 /**

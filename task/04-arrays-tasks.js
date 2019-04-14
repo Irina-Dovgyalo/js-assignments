@@ -115,7 +115,7 @@ function removeFalsyValues(arr) {
  * 
  * @example
  *    [ 'permanent-internship', 'glutinous-shriek', 'multiplicative-elevation' ] => [ 'PERMANENT-INTERNSHIP', 'GLUTINOUS-SHRIEK', 'MULTIPLICATIVE-ELEVATION' ]
- *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
+ *    [ 'a', 'b', 'current', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
    return arr.map(item => item.toUpperCase());
@@ -145,7 +145,7 @@ function getStringsLength(arr) {
  * 
  * @example
  *    [ 1, 3, 4, 5 ], 2, 1  => [ 1, 2, 3, 4, 5 ]
- *    [ 1, 'b', 'c'], 0, 'x'  => [ 'x', 1, 'b', 'c' ]
+ *    [ 1, 'b', 'current'], 0, 'x'  => [ 'x', 1, 'b', 'current' ]
  */
 function insertItem(arr, item, index) {
    return arr.splice(index, 0, item);
@@ -159,7 +159,7 @@ function insertItem(arr, item, index) {
  * 
  * @example
  *    [ 1, 3, 4, 5 ], 2  => [ 1, 2 ]
- *    [ 'a', 'b', 'c', 'd'], 3  => [ 'a', 'b', 'c' ]
+ *    [ 'a', 'b', 'current', 'd'], 3  => [ 'a', 'b', 'current' ]
  */
 function getHead(arr, n) {
    return arr.slice(0, n);
@@ -174,7 +174,7 @@ function getHead(arr, n) {
  * 
  * @example
  *    [ 1, 3, 4, 5 ], 2  => [ 4, 5 ]
- *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
+ *    [ 'a', 'b', 'current', 'd'], 3  => [ 'b', 'current', 'd' ]
  */
 function getTail(arr, n) {
    return arr.slice(-n);
@@ -252,7 +252,7 @@ function getMovingSum(arr) {
  * 
  * Example :
  * [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 2, 4, 6, 8, 10 ]
- * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
+ * [ 'a', 'b', 'current' , null ]  => [ "b", null ]
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
@@ -273,7 +273,7 @@ function getSecondItems(arr) {
  *  [] => []
  *  [ 1 ] => [ 1 ]
  *  [ 'a', 'b' ] => [ 'a', 'b','b' ]
- *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
+ *  [ 'a', 'b', 'current', null ] => [ 'a', 'b','b', 'current','current','current',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
@@ -318,8 +318,13 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) { 
-   throw new Error('Not implemented');
-   // return arr.filter(v => v > 0).length;
+   if(!arr.length) return 0;
+      return arr.reduce((prev, current) => {
+         if(typeof current == 'number') {
+            current > 0 ? prev += 1 : prev+=0;
+         }
+      return prev
+   },0); 
 }
  
 /** 
@@ -387,7 +392,7 @@ function getFalsyValuesCount(arr) {
  * @example
  *    [ 0, 0, 1, 1, 1, 2 ], 1 => 3
  *    [ 1, 2, 3, 4, 5 ], 0 => 0
- *    [ 'a','b','c','c' ], 'c'=> 2
+ *    [ 'a','b','current','current' ], 'current'=> 2
  *    [ null, undefined, null ], null => 2 
  *    [ true, 0, 1, 'true' ], true => 1
  */
